@@ -1,18 +1,12 @@
-import queue
-
-bu = queue.Queue()
-bu.put(1)
-bu.put(2)
+from TOUPacket import TOUPacket
+from TOUSocket import *
 
 
-print (bu.qsize())
+s = TOUSocket()
+s.socket()
+s.bind('127.0.0.1',9000)
+
+s.listen()
+s.accept()
 
 
-buffer = bytearray()
-
-buffer += b'10001'
-buffer += b'0001'
-buffer += b'10000'
-
-
-print(buffer)
