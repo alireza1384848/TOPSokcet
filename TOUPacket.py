@@ -19,7 +19,6 @@ class TOUPacket:
         self.flag = flag
         self.window_size = window_size
         self.payload = payload
-        print(type(payload))
         self.payload_len = len(payload)
         self.mss = mss
 
@@ -34,7 +33,7 @@ class TOUPacket:
             f"  window_size: {self.window_size}\n"
             f"  payload_len: {self.payload_len}\n"
             f"  mss:         {self.mss}\n"
-            f"  payload:     {self.payload.hex()} ({self.payload_len} bytes)\n"
+            f"  payload:     {self.payload} ({self.payload_len} bytes)\n"
         )
 
     def to_bytes(self):
@@ -76,8 +75,8 @@ class TOUPacket:
         flags = {
             'SYN': bool(flags_byte & 0b1000),
             'ACK': bool(flags_byte & 0b0100),
-            'FIN': bool(flags_byte & 0b0010),
-            'RST': bool(flags_byte & 0b0001),
+            'RST': bool(flags_byte & 0b0010),
+            'FIN': bool(flags_byte & 0b0001),
         }
 
         return cls(
