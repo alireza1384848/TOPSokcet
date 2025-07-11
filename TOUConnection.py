@@ -557,7 +557,7 @@ class TOUConnection:
         self.EXPECTED_SEQ_NUM = acknum
 
         print(f"[{datetime.now()}] Connection initialized: {source_ip}:{source_port} -> {target_ip}:{target_port} | Seq: {seqnum} | Ack: {acknum}")
-        var = threading.Thread(target=self.send_thread, args=(), name="send thread").start()
+        var = threading.Thread(target=self.send_thread, args=(), name=f"send thread").start()
         var2 = threading.Thread(target=self.recive_thread, args=(), name="receive thread").start()
 
         self.in_zero_window = False
