@@ -119,7 +119,7 @@ Contributions are welcome! To contribute:
 4. Push to your branch: `git push origin feature/your-feature`.
 5. Open a pull request.
 
-Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
 
 ## License
 
