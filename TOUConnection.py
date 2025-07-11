@@ -630,7 +630,7 @@ class TOUConnection:
                                  100,
                                  bytearray(),
                                  self.mss)
-        max_retries = 5
+        max_retries = 3
         retry_count = 0
         print(f"[{datetime.now()}] Initiating connection close from {self.source_ip}:{self.source_port}")
         while retry_count < max_retries and not self.close_from_source:

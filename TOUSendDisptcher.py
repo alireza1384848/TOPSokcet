@@ -51,7 +51,7 @@ class TOUSendDispatcher:
     def __init__(self, usocket: socket):
         self.udp_socket = usocket
         print(f"[{datetime.now()}] Dispatcher initialized for socket")
-        var = threading.Thread(target=self.send, args=(), name='Dispatcher').start()
+        var = threading.Thread(target=self.send, args=(), name=f'Dispatcher {self.udp_socket.getsockname()}').start()
 
     def write(self, pac: packet, addr):
         self.packet_queue.put((pac, addr))

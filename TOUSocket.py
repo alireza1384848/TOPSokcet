@@ -212,14 +212,15 @@ class TOUSocket:
                 self.dispacher.delete_packet_conn(conn)
                 print(f"[{datetime.now()}] Removed closed connection {conn}")
             try:
+                if not self.can_work and len(self.connection_dict) == 0:
+                        self.is_closed = True
+                        self.dispacher.turn_off()
+                        continue
                 self.udp_socket.settimeout(10)
                 recv_bytes, addr = self.udp_socket.recvfrom(1024)
                 pack = None
                 try:
                     #finish connection
-                    if not self.can_work and len(self.connection_dict) == 0:
-                        self.is_closed = True
-                        self.dispacher.turn_off()
                     pack = packet.from_bytes(recv_bytes)
                     print(f"[{datetime.now()}] Received packet from {addr} \n| Seq: {pack.seqnum} \n| Ack: {pack.acknum} \n| Flags: {pack.flag} \n| Payload : {pack.payload}")
                     randseq = self.generate_seq()
@@ -279,10 +280,21 @@ class TOUSocket:
                         print(f"[{datetime.now()}] Unknown packet from {addr} | Seq: {pack.seqnum} | Ack: {pack.acknum}")
                 except Exception as e:
                     print(f"[{datetime.now()}] Error in buffering thread: {e}")
+                    continue
             except Exception as e:
                 print(f"[{datetime.now()}] Error in buffering thread: {e}")
+                continue
         print(f"[{datetime.now()}] Buffering thread finished")
         self.udp_socket.close()
+        all_threads = threading.enumerate()
+
+        # Print number of active threads
+        print(f"Active threads: {len(all_threads)}")
+
+        # Optional: Print their names
+        for t in all_threads:
+            print(f"Thread name: {t.name}")
+
         exit(0)
 
     def buffering_thread_client(self):
