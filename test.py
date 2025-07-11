@@ -7,6 +7,7 @@ s.socket()
 s.bind('127.0.0.1',9000)
 
 s.listen()
-s.accept()
+conn , addr= s.accept()
+print(f"Message = {conn.receive(25)} from {addr}")
 
 
