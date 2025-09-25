@@ -28,7 +28,7 @@ This project serves as an educational tool for understanding low-level networkin
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/tou-protocol.git
+   git clone https://github.com/alireza1384848/TOPSokcet.git
    cd tou-protocol
    ```
 
