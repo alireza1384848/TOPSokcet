@@ -43,27 +43,6 @@ This project serves as an educational tool for understanding low-level networkin
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-## Usage
-
-### Running the Server
-1. Start the server using `TOUSocket.py`:
-   ```bash
-   python TOUSocket.py
-   ```
-2. The server binds to a specified IP and port (e.g., `127.0.0.1:5000`) and listens for incoming connections.
-
-### Running the Client
-1. Connect to the server using `TOUSocket.py` in client mode:
-   ```bash
-   python TOUSocket.py --client <server_ip> <server_port>
-   ```
-   Example:
-   ```bash
-   python TOUSocket.py --client 127.0.0.1 5000
-   ```
-
-2. Send and receive data using the `send` and `receive` methods of the `TOUSocket` class.
-
 ### Example
 ```python
 from TOUSocket import TOUSocket
